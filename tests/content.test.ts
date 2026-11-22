@@ -1,22 +1,22 @@
 import { describe, expect, it } from "vitest";
 import sitemap from "@/app/sitemap";
 import { caseStudies, publishedCaseStudies } from "@/data/case-studies";
+import { portfolioProjects, publishedProjects } from "@/data/portfolio";
 import { serviceDivisions } from "@/data/services";
 import { industrySolutions } from "@/data/solutions";
 import { isPublic, publishedTeam, teamMembers } from "@/data/team";
 
 describe("team publication gate", () => {
-  it("keeps every unverified placeholder unpublished", () => {
-    const placeholders = teamMembers.filter((m) => m.reportsTo !== null);
-    expect(placeholders).toHaveLength(10);
-    expect(placeholders.every((m) => !isPublic(m))).toBe(true);
-    expect(publishedTeam).toHaveLength(0);
+  it("never publishes an unnamed role slot", () => {
+    const slots = teamMembers.filter((m) => m.name === "TBC");
+    expect(slots.every((m) => !isPublic(m))).toBe(true);
+    expect(publishedTeam.every((m) => m.name !== "TBC")).toBe(true);
   });
 
-  it("models the reporting structure", () => {
-    const heads = teamMembers.filter((m) => m.reportsTo === "shravan-thakur");
-    expect(heads.map((h) => h.id).sort()).toEqual(["aarav-sharma", "ishita-kapoor", "neha-gupta", "priya-verma"]);
-    expect(teamMembers.filter((m) => m.reportsTo === "aarav-sharma")).toHaveLength(3);
+  it("keeps the team to 4-6 profiles reporting to the founder", () => {
+    expect(teamMembers.length).toBeGreaterThanOrEqual(4);
+    expect(teamMembers.length).toBeLessThanOrEqual(6);
+    expect(teamMembers.filter((m) => m.reportsTo !== null).every((m) => m.reportsTo === "shravan-thakur")).toBe(true);
   });
 });
 
@@ -31,10 +31,19 @@ describe("content integrity", () => {
     expect(publishedCaseStudies).toHaveLength(0);
   });
 
+  it("only publishes complete portfolio entries with live https URLs", () => {
+    expect(new Set(portfolioProjects.map((p) => p.slug)).size).toBe(portfolioProjects.length);
+    for (const p of publishedProjects) {
+      expect(p.url.startsWith("https://")).toBe(true);
+      expect(p.summary).not.toContain("TODO");
+      expect(p.built.length).toBeGreaterThan(0);
+    }
+  });
+
   it("sitemap lists every public page once and no API routes", () => {
     const urls = sitemap().map((e) => e.url);
     expect(new Set(urls).size).toBe(urls.length);
     expect(urls.some((u) => u.includes("/api/"))).toBe(false);
-    expect(urls).toHaveLength(9 + 6 + 6 + 3);
+    expect(urls).toHaveLength(10 + 6 + 6 + 3);
   });
 });

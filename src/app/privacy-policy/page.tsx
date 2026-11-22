@@ -16,7 +16,7 @@ export default function PrivacyPolicyPage() {
       title="Privacy Policy"
       intro={`This policy explains what personal information ${name} collects through this website, why, and the choices you have.`}
       path="/privacy-policy"
-      updated="2026-11-21"
+      updated="2026-11-22"
     >
       <h2>Who we are</h2>
       <p>
@@ -60,8 +60,21 @@ export default function PrivacyPolicyPage() {
 
       <h2>Cookies and analytics</h2>
       <p>
-        This website does not currently use advertising or analytics cookies. If we add analytics or similar tools in future, we
-        will update this policy and, where required, ask for your consent first.
+        We use Google Tag Manager and Google Analytics 4 to understand how visitors use this website — for example which pages
+        are viewed, how visitors arrive and whether the contact form is used. These tools set cookies and collect information
+        such as your approximate location (derived from your IP address), device and browser type, and the pages you visit. We use
+        this information only in aggregate, to improve the website. We do not use it to identify you and we do not sell it.
+      </p>
+      <p>
+        Google processes this data on our behalf. You can learn more in{" "}
+        <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">
+          how Google uses information from sites that use its services
+        </a>
+        , and you can opt out of Google Analytics with the{" "}
+        <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer">
+          Google Analytics opt-out browser add-on
+        </a>
+        . You can also block or delete cookies in your browser settings. This website does not use advertising cookies.
       </p>
 
       <h2>How long we keep information</h2>

@@ -7,6 +7,7 @@ import { IndustriesShowcase } from "@/components/sections/home/IndustriesShowcas
 import { IntroSection } from "@/components/sections/home/IntroSection";
 import { LeadershipSection } from "@/components/sections/home/LeadershipSection";
 import { ProcessSection } from "@/components/sections/home/ProcessSection";
+import { SelectedWork } from "@/components/sections/home/SelectedWork";
 import { ServicesList } from "@/components/sections/home/ServicesList";
 import { TechnologySection } from "@/components/sections/home/TechnologySection";
 import { WhyChooseUs } from "@/components/sections/home/WhyChooseUs";
@@ -28,6 +29,7 @@ export default function HomePage() {
       <CapabilityStrip />
       <IntroSection />
       <ServicesList />
+      <SelectedWork />
       <WhyChooseUs />
       <IndustriesShowcase />
       <ProcessSection />

@@ -4,6 +4,7 @@ import "@/styles/globals.css";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { MotionProvider } from "@/components/motion/MotionProvider";
+import { GoogleTagManager, GoogleTagManagerNoScript } from "@/components/seo/GoogleTagManager";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { siteConfig, siteUrl } from "@/config/site";
 import { organizationJsonLd, websiteJsonLd } from "@/lib/seo";
@@ -65,6 +66,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         />
       </head>
       <body>
+        <GoogleTagManagerNoScript />
         <a
           href="#main"
           className="fixed left-3 top-3 z-[100] -translate-y-24 rounded-full bg-ink px-5 py-3 text-sm font-semibold text-white transition-transform focus:translate-y-0"
@@ -78,6 +80,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Footer />
         <MotionProvider />
         <JsonLd data={[organizationJsonLd(), websiteJsonLd()]} />
+        <GoogleTagManager />
       </body>
     </html>
   );

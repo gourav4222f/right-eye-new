@@ -11,11 +11,16 @@
 
 const rawSiteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
 
-/** Absolute site origin without a trailing slash. No production domain has been supplied yet. */
-export const siteUrl = (rawSiteUrl && rawSiteUrl.length > 0 ? rawSiteUrl : "http://localhost:3000").replace(/\/+$/, "");
+/** The live domain. Production builds use it unless NEXT_PUBLIC_SITE_URL overrides it. */
+export const productionUrl = "https://righteyetechnology.com";
 
-/** True once a real public domain has been configured. */
-export const hasConfiguredSiteUrl = Boolean(rawSiteUrl && !/localhost|127\.0\.0\.1/.test(rawSiteUrl));
+const fallbackUrl = process.env.NODE_ENV === "production" ? productionUrl : "http://localhost:3000";
+
+/** Absolute site origin without a trailing slash. */
+export const siteUrl = (rawSiteUrl && rawSiteUrl.length > 0 ? rawSiteUrl : fallbackUrl).replace(/\/+$/, "");
+
+/** True when canonical URLs point at a real public domain. */
+export const hasConfiguredSiteUrl = !/localhost|127\.0\.0\.1/.test(siteUrl);
 
 const phoneDisplay = "+91-8744867110";
 const phoneE164 = "+918744867110";
@@ -52,6 +57,8 @@ export const siteConfig = {
   name: "RightEyeTechnology",
   shortName: "RightEye",
   legalName: "RightEyeTechnology",
+  /** Name variants, so search engines can tell us apart from unrelated "RightEye" companies. */
+  alternateNames: ["RightEye Technology", "Right Eye Technology"],
   tagline: "One Technology Partner. From Idea to Growth.",
   description:
     "RightEyeTechnology is a full-service technology company in India. We build websites, web and mobile apps, custom software and CRMs, and run digital marketing, cloud hosting, SaaS engineering and AI automation for growing businesses.",
@@ -60,17 +67,21 @@ export const siteConfig = {
     role: "Founder & CEO",
   },
   contact: {
-    email: "righteyetech@gmail.com",
+    email: "info@righteyetechnology.com",
     phoneDisplay,
     phoneE164,
     phoneHref: `tel:${phoneE164}`,
-    emailHref: "mailto:righteyetech@gmail.com",
+    emailHref: "mailto:info@righteyetechnology.com",
   },
   whatsapp: {
     enabled: whatsappNumber.length >= 10,
     url: whatsappNumber.length >= 10
       ? `https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Hello RightEyeTechnology, I'd like to discuss a project.")}`
       : "",
+  },
+  analytics: {
+    /** Google Tag Manager container. GA4 is set up inside GTM. Override with NEXT_PUBLIC_GTM_ID. */
+    gtmId: (process.env.NEXT_PUBLIC_GTM_ID ?? "GTM-PG5RNS7X").trim(),
   },
   market: "India",
   timezone: "Asia/Kolkata",

@@ -47,6 +47,7 @@ export const mainNavigation: NavItem[] = [
       { label: "How we work", href: "/how-we-work" },
     ],
   },
+  { label: "Work", href: "/work" },
   { label: "Insights", href: "/insights" },
   { label: "Contact", href: "/contact" },
 ];
@@ -57,6 +58,7 @@ export const footerNavigation = {
   company: [
     { label: "About", href: "/about" },
     { label: "How we work", href: "/how-we-work" },
+    { label: "Our work", href: "/work" },
     { label: "Insights", href: "/insights" },
     { label: "Contact", href: "/contact" },
   ],

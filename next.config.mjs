@@ -1,4 +1,7 @@
-import type { NextConfig } from "next";
+// Plain JavaScript on purpose: hosts whose Linux is too old for Next.js native
+// compiler (e.g. Hostinger shared Node hosting) cannot load a TypeScript config.
+
+/** @type {import("next").NextConfig} */
 
 const securityHeaders = [
   { key: "X-Content-Type-Options", value: "nosniff" },
@@ -8,7 +11,7 @@ const securityHeaders = [
   { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains" },
 ];
 
-const nextConfig: NextConfig = {
+const nextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
   poweredByHeader: false,

@@ -1,22 +1,19 @@
 /**
  * Team data.
  *
- * IMPORTANT: Apart from the founder, every person below is a PROPOSED
- * PLACEHOLDER for the organisational structure — not a verified employee.
- * They stay unpublished (`isVerified: false`, `isPublished: false`) and are
- * never rendered on the public site or in structured data.
+ * The founder plus a small senior team (4–6 profiles). Only real people
+ * appear publicly: a profile renders when BOTH `isVerified` and
+ * `isPublished` are true.
  *
- * To publish someone: replace the placeholder with their real details,
- * add a real photo to /public/images/team/, write a biography they have
- * approved, and set BOTH `isVerified` and `isPublished` to true.
+ * To publish someone:
+ *   1. Replace the "TBC" name with their real name.
+ *   2. Add a real photo to /public/images/team/ (square, at least 800×800, .webp).
+ *   3. Add a biography they have approved, their years of experience,
+ *      expertise and their LinkedIn URL.
+ *   4. Set `isVerified` and `isPublished` to true.
  */
 
-export type Department =
-  | "Leadership"
-  | "Technology & Engineering"
-  | "Design & Experience"
-  | "Growth & Marketing"
-  | "Operations & Client Success";
+export type Department = "Leadership" | "Technology & Engineering" | "Growth & Marketing" | "AI & Automation";
 
 export interface TeamMember {
   id: string;
@@ -27,8 +24,12 @@ export interface TeamMember {
   reportsTo: string | null;
   /** Path under /public, e.g. "/images/team/shravan-thakur.webp". Empty until a real photo is supplied. */
   profileImage: string;
-  /** Approved biography. Empty until provided by the person. */
+  /** Approved biography, 2–3 sentences. Empty until provided by the person. */
   biography: string;
+  /** Whole years of professional experience, e.g. 8. Shown as "8+ years". 0 hides it. */
+  yearsExperience: number;
+  /** 3–5 short skills or tools, e.g. ["Next.js", "Laravel", "WordPress"]. */
+  expertise: string[];
   /** Full https:// LinkedIn URL, or empty. */
   linkedin: string;
   isVerified: boolean;
@@ -44,21 +45,55 @@ export const teamMembers: TeamMember[] = [
     reportsTo: null,
     profileImage: "",
     biography: "",
+    yearsExperience: 0,
+    expertise: [],
     linkedin: "",
     isVerified: true,
     isPublished: true,
   },
-  // ---- Proposed placeholders below: NOT verified employees. ----
-  { id: "aarav-sharma", name: "Aarav Sharma", designation: "Head of Technology & Engineering", department: "Technology & Engineering", reportsTo: "shravan-thakur", profileImage: "", biography: "", linkedin: "", isVerified: false, isPublished: false },
-  { id: "rohan-mehta", name: "Rohan Mehta", designation: "Full-Stack Developer", department: "Technology & Engineering", reportsTo: "aarav-sharma", profileImage: "", biography: "", linkedin: "", isVerified: false, isPublished: false },
-  { id: "ananya-singh", name: "Ananya Singh", designation: "Mobile App Developer", department: "Technology & Engineering", reportsTo: "aarav-sharma", profileImage: "", biography: "", linkedin: "", isVerified: false, isPublished: false },
-  { id: "vikram-rao", name: "Vikram Rao", designation: "Cloud & DevOps Engineer", department: "Technology & Engineering", reportsTo: "aarav-sharma", profileImage: "", biography: "", linkedin: "", isVerified: false, isPublished: false },
-  { id: "priya-verma", name: "Priya Verma", designation: "Head of Design & Experience", department: "Design & Experience", reportsTo: "shravan-thakur", profileImage: "", biography: "", linkedin: "", isVerified: false, isPublished: false },
-  { id: "meera-joshi", name: "Meera Joshi", designation: "UI/UX Designer", department: "Design & Experience", reportsTo: "priya-verma", profileImage: "", biography: "", linkedin: "", isVerified: false, isPublished: false },
-  { id: "ishita-kapoor", name: "Ishita Kapoor", designation: "Head of Growth & Marketing", department: "Growth & Marketing", reportsTo: "shravan-thakur", profileImage: "", biography: "", linkedin: "", isVerified: false, isPublished: false },
-  { id: "arjun-patel", name: "Arjun Patel", designation: "SEO & Content Strategist", department: "Growth & Marketing", reportsTo: "ishita-kapoor", profileImage: "", biography: "", linkedin: "", isVerified: false, isPublished: false },
-  { id: "neha-gupta", name: "Neha Gupta", designation: "Head of Operations & Client Success", department: "Operations & Client Success", reportsTo: "shravan-thakur", profileImage: "", biography: "", linkedin: "", isVerified: false, isPublished: false },
-  { id: "kavya-nair", name: "Kavya Nair", designation: "Project Coordinator", department: "Operations & Client Success", reportsTo: "neha-gupta", profileImage: "", biography: "", linkedin: "", isVerified: false, isPublished: false },
+  // ---- Role slots: fill in the real person, then publish. ----
+  {
+    id: "senior-developer",
+    name: "TBC",
+    designation: "Senior Full-Stack Developer",
+    department: "Technology & Engineering",
+    reportsTo: "shravan-thakur",
+    profileImage: "",
+    biography: "",
+    yearsExperience: 0,
+    expertise: [],
+    linkedin: "",
+    isVerified: false,
+    isPublished: false,
+  },
+  {
+    id: "senior-marketing",
+    name: "TBC",
+    designation: "Senior Digital Marketing Manager",
+    department: "Growth & Marketing",
+    reportsTo: "shravan-thakur",
+    profileImage: "",
+    biography: "",
+    yearsExperience: 0,
+    expertise: [],
+    linkedin: "",
+    isVerified: false,
+    isPublished: false,
+  },
+  {
+    id: "ai-specialist",
+    name: "TBC",
+    designation: "AI & Automation Specialist",
+    department: "AI & Automation",
+    reportsTo: "shravan-thakur",
+    profileImage: "",
+    biography: "",
+    yearsExperience: 0,
+    expertise: [],
+    linkedin: "",
+    isVerified: false,
+    isPublished: false,
+  },
 ];
 
 /** The only gate for public display. Both flags must be true. */
@@ -75,21 +110,21 @@ export const publishedTeam = teamMembers.filter((m) => isPublic(m) && m.reportsT
  * Practice areas describe how work is organised. They are capability
  * descriptions, not claims about headcount, and are safe to show publicly.
  */
-export const practiceAreas: Array<{ department: Exclude<Department, "Leadership">; focus: string }> = [
+export const practiceAreas: Array<{ department: string; focus: string }> = [
   {
     department: "Technology & Engineering",
-    focus: "Web and mobile development, custom software, APIs, cloud infrastructure and DevOps.",
+    focus: "Websites, web and mobile apps, CMS and workflow tools, APIs, cloud infrastructure and DevOps.",
   },
   {
     department: "Design & Experience",
-    focus: "User research, interface design, prototyping and design systems for websites and apps.",
+    focus: "Interface design, prototyping and design systems for websites and apps.",
   },
   {
     department: "Growth & Marketing",
     focus: "SEO, content, paid media, social media, video and analytics.",
   },
   {
-    department: "Operations & Client Success",
-    focus: "Project planning, coordination, client communication and ongoing support.",
+    department: "AI & Automation",
+    focus: "AI assistants, WhatsApp and enquiry automation, and workflow integrations.",
   },
 ];

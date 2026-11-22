@@ -30,7 +30,10 @@ export function FounderCard() {
         )}
       </div>
       <div className="flex flex-col justify-center">
-        <p className="text-sm font-semibold text-ember">{founder.designation}</p>
+        <p className="text-sm font-semibold text-ember">
+          {founder.designation}
+          {founder.yearsExperience > 0 ? <> &middot; {founder.yearsExperience}+ years in technology</> : null}
+        </p>
         <h3 className="heading-lg mt-2">{founder.name}</h3>
         {founder.biography ? (
           <p className="mt-5 max-w-[60ch] text-muted">{founder.biography}</p>
@@ -41,6 +44,15 @@ export function FounderCard() {
             scoped and delivered.
           </p>
         )}
+        {founder.expertise.length > 0 ? (
+          <ul className="mt-5 flex flex-wrap gap-1.5" aria-label={`${founder.name}'s expertise`}>
+            {founder.expertise.map((e) => (
+              <li key={e} className="rounded-full bg-paper px-3 py-1 text-xs font-medium">
+                {e}
+              </li>
+            ))}
+          </ul>
+        ) : null}
         {founder.linkedin ? (
           <a
             href={founder.linkedin}
