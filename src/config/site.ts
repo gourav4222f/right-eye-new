@@ -25,8 +25,8 @@ export const hasConfiguredSiteUrl = !/localhost|127\.0\.0\.1/.test(siteUrl);
 const phoneDisplay = "+91-8744867110";
 const phoneE164 = "+918744867110";
 
-/** WhatsApp number in international format without "+" (e.g. 918744867110). Not enabled until confirmed. */
-const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "") ?? "";
+/** WhatsApp number in international format without "+". Defaults to the business phone; override with NEXT_PUBLIC_WHATSAPP_NUMBER. */
+const whatsappNumber = (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "918744867110").replace(/\D/g, "");
 
 export type SocialKey = "linkedin" | "instagram" | "facebook" | "youtube" | "x" | "github";
 
@@ -37,21 +37,31 @@ export interface SocialLink {
 }
 
 /**
- * Social profiles. A profile is rendered only when its URL is configured,
- * so there are never dead "#" links. Set these in `.env.local` or your host.
+ * Social profiles. TODO: paste each profile URL here (full https:// link), or
+ * set the NEXT_PUBLIC_SOCIAL_* variable on the host. Icons always show; an
+ * icon becomes a clickable link (and is added to schema `sameAs`) once its URL is set.
  */
-const socialCandidates: Array<{ key: SocialKey; label: string; url: string | undefined }> = [
-  { key: "linkedin", label: "LinkedIn", url: process.env.NEXT_PUBLIC_SOCIAL_LINKEDIN },
-  { key: "instagram", label: "Instagram", url: process.env.NEXT_PUBLIC_SOCIAL_INSTAGRAM },
-  { key: "facebook", label: "Facebook", url: process.env.NEXT_PUBLIC_SOCIAL_FACEBOOK },
-  { key: "youtube", label: "YouTube", url: process.env.NEXT_PUBLIC_SOCIAL_YOUTUBE },
-  { key: "x", label: "X", url: process.env.NEXT_PUBLIC_SOCIAL_X },
-  { key: "github", label: "GitHub", url: process.env.NEXT_PUBLIC_SOCIAL_GITHUB },
+const profileUrls: Record<Exclude<SocialKey, "github">, string> = {
+  instagram: process.env.NEXT_PUBLIC_SOCIAL_INSTAGRAM ?? "",
+  facebook: process.env.NEXT_PUBLIC_SOCIAL_FACEBOOK ?? "",
+  linkedin: process.env.NEXT_PUBLIC_SOCIAL_LINKEDIN ?? "",
+  youtube: process.env.NEXT_PUBLIC_SOCIAL_YOUTUBE ?? "",
+  x: process.env.NEXT_PUBLIC_SOCIAL_X ?? "",
+};
+
+const validUrl = (url: string) => (/^https:\/\//.test(url.trim()) ? url.trim() : "");
+
+/** Every platform we show an icon for, with its URL or "" until linked. */
+export const socialProfiles: SocialLink[] = [
+  { key: "instagram", label: "Instagram", url: validUrl(profileUrls.instagram) },
+  { key: "facebook", label: "Facebook", url: validUrl(profileUrls.facebook) },
+  { key: "linkedin", label: "LinkedIn", url: validUrl(profileUrls.linkedin) },
+  { key: "youtube", label: "YouTube", url: validUrl(profileUrls.youtube) },
+  { key: "x", label: "X", url: validUrl(profileUrls.x) },
 ];
 
-export const socialLinks: SocialLink[] = socialCandidates
-  .filter((s): s is { key: SocialKey; label: string; url: string } => Boolean(s.url && /^https:\/\//.test(s.url)))
-  .map((s) => ({ key: s.key, label: s.label, url: s.url }));
+/** Only profiles with a URL — used for links in text and schema `sameAs`. */
+export const socialLinks: SocialLink[] = socialProfiles.filter((s) => s.url);
 
 export const siteConfig = {
   name: "RightEyeTechnology",
@@ -83,7 +93,7 @@ export const siteConfig = {
    */
   hours: { label: "", days: [] as string[], opens: "", closes: "" },
   founder: {
-    name: "Shravan Thakur",
+    name: "Rakesh",
     role: "Founder & CEO",
   },
   contact: {
@@ -94,11 +104,17 @@ export const siteConfig = {
     emailHref: "mailto:info@righteyetechnology.com",
   },
   whatsapp: {
+    number: whatsappNumber,
     enabled: whatsappNumber.length >= 10,
     url: whatsappNumber.length >= 10
       ? `https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Hello RightEyeTechnology, I'd like to discuss a project.")}`
       : "",
   },
+  /**
+   * Google Search Console HTML-tag verification code (only the content="..." value).
+   * Not needed if you verify with a DNS TXT record (recommended: Domain property).
+   */
+  searchConsoleVerification: (process.env.NEXT_PUBLIC_GSC_VERIFICATION ?? "").trim(),
   analytics: {
     /** Google Tag Manager container. GA4 is set up inside GTM. Override with NEXT_PUBLIC_GTM_ID. */
     gtmId: (process.env.NEXT_PUBLIC_GTM_ID ?? "GTM-PG5RNS7X").trim(),
@@ -108,6 +124,7 @@ export const siteConfig = {
   locale: "en_IN",
   logo: "/brand/logo-square.png",
   social: socialLinks,
+  socialProfiles,
   seo: {
     titleTemplate: "%s | RightEyeTechnology",
     defaultTitle: "RightEyeTechnology — Digital Marketing, Social Media, Ads, Video, PR & Websites in Delhi",

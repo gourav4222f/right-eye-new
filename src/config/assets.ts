@@ -67,5 +67,8 @@ export const industryImages: Record<SolutionSlug, SiteImage> = {
 export const articleImages: Record<string, SiteImage> = {
   "how-to-plan-a-business-website": t("article-planning.webp", 408, 360, "Keyboard and open notebook with a pen on an orange desk"),
   "custom-crm-vs-off-the-shelf": t("article-crm.webp", 408, 360, "Shelf of books and coffee mugs"),
+  "social-media-marketing-cost-delhi": t("team-laptop.webp", 770, 560, "A group gathered around a laptop, discussing a plan"),
+  "rank-on-google-maps-delhi": t("people-studying.webp", 770, 560, "People studying together on laptops in a busy café"),
+  "google-ads-vs-meta-ads-local-business": t("desk-mug.webp", 822, 674, "Notebook and coffee mug on a sunlit desk"),
   "website-hosting-checklist": t("service-cloud-datacenter.webp", 408, 360, "Corridor of server racks in a data centre"),
 };

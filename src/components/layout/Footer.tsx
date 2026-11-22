@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { cacheLife } from "next/cache";
-import { ArrowUpRight } from "lucide-react";
 import { LogoFull } from "@/components/art/Logo";
+import { SocialIcons } from "@/components/ui/SocialIcons";
 import { LocalTime } from "@/components/ui/LocalTime";
 import { footerNavigation } from "@/config/navigation";
 import { siteConfig } from "@/config/site";
@@ -13,7 +13,7 @@ async function CopyrightYear() {
 }
 
 export function Footer() {
-  const { contact, social, whatsapp, address } = siteConfig;
+  const { contact, address } = siteConfig;
   return (
     <footer data-footer-reveal className="panel on-dark mb-2 mt-2 bg-graphite pt-14 text-white lg:mb-3 lg:pt-16">
       <div className="container-site">
@@ -37,34 +37,7 @@ export function Footer() {
               Office: {address.streetAddress ? `${address.streetAddress}, ` : ""}
               {address.display}
             </a>
-            {(social.length > 0 || whatsapp.enabled) && (
-              <ul className="mt-3 flex flex-wrap gap-2 lg:justify-end" aria-label="Social profiles">
-                {whatsapp.enabled && (
-                  <li>
-                    <a
-                      href={whatsapp.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex min-h-9 items-center gap-1 rounded-full bg-white px-3.5 text-xs font-semibold text-ink transition-colors hover:bg-signal-strong hover:text-white"
-                    >
-                      WhatsApp <ArrowUpRight className="size-3.5" aria-hidden="true" />
-                    </a>
-                  </li>
-                )}
-                {social.map((s) => (
-                  <li key={s.key}>
-                    <a
-                      href={s.url}
-                      target="_blank"
-                      rel="noopener noreferrer me"
-                      className="inline-flex min-h-9 items-center gap-1 rounded-full bg-white px-3.5 text-xs font-semibold text-ink transition-colors hover:bg-signal-strong hover:text-white"
-                    >
-                      {s.label} <ArrowUpRight className="size-3.5" aria-hidden="true" />
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            )}
+            <SocialIcons tone="light" className="mt-3 lg:justify-end" />
           </div>
         </div>
 

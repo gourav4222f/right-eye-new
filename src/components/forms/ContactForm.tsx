@@ -15,15 +15,15 @@ import { cn } from "@/lib/utils";
 type Status =
   | { state: "idle" }
   | { state: "submitting" }
-  | { state: "success"; message: string }
+  | { state: "success"; message: string; waUrl?: string }
   | { state: "error"; message: string; code?: string };
 
 const fieldOrder = ["fullName", "email", "phone", "service", "details", "budget", "consent"] as const;
 
 /**
- * Project enquiry form. Validates in the browser for fast feedback, then
- * posts JSON to /api/contact, which re-validates and sends the email.
- * Success is shown ONLY when the server confirms the mail was accepted.
+ * Project enquiry form. Validates in the browser, then opens WhatsApp with
+ * the enquiry pre-filled for our business number (the visitor presses Send).
+ * A copy is also posted to /api/contact, which emails it when SMTP is set up.
  */
 export function ContactForm() {
   const formId = useId();
@@ -68,48 +68,65 @@ export function ContactForm() {
 
     setErrors({});
     setStatus({ state: "submitting" });
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      const data = (await res.json().catch(() => null)) as
-        | { ok: true; message: string }
-        | { ok: false; code: string; message: string; fieldErrors?: FieldErrors }
-        | null;
 
-      if (res.ok && data?.ok) {
-        setStatus({ state: "success", message: data.message });
-        formRef.current?.reset();
-        return;
-      }
-      if (data && !data.ok && data.fieldErrors) {
-        setErrors(data.fieldErrors);
-        focusFirstError(data.fieldErrors);
-      }
-      setStatus({
-        state: "error",
-        code: data && !data.ok ? data.code : undefined,
-        message: data?.message ?? `Something went wrong. Please email ${siteConfig.contact.email} instead.`,
-      });
-    } catch {
-      setStatus({
-        state: "error",
-        message: `We couldn't reach the server. Check your connection and try again, or email ${siteConfig.contact.email}.`,
-      });
-    }
+    // 1) Open WhatsApp with the enquiry pre-filled. Must run inside the click handler so
+    //    browsers don't block the new tab.
+    const d = parsed.data;
+    const text = [
+      `New enquiry from the website (${window.location.hostname})`,
+      "",
+      `Name: ${d.fullName}`,
+      `Phone: ${d.phone}`,
+      `Email: ${d.email}`,
+      `Service: ${d.service}`,
+      d.budget ? `Budget: ${d.budget}` : null,
+      "",
+      `Details: ${d.details}`,
+    ]
+      .filter((line) => line !== null)
+      .join("\n");
+    const waUrl = `https://wa.me/${siteConfig.whatsapp.number}?text=${encodeURIComponent(text)}`;
+    // ("noopener" in the features string makes window.open return null, so detach manually.)
+    const win = window.open(waUrl, "_blank");
+    if (win) win.opener = null;
+    else window.location.href = waUrl;
+
+    // 2) Also send a copy by email when SMTP is configured (best effort, never blocks the visitor).
+    fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+      keepalive: true,
+    }).catch(() => {});
+
+    setStatus({
+      state: "success",
+      message:
+        "WhatsApp has opened with your enquiry filled in — just press Send. If it didn't open, use the button below or call us.",
+      waUrl,
+    });
+    formRef.current?.reset();
   }
 
   if (status.state === "success") {
     return (
       <div role="status" className="rounded-[var(--radius-card)] bg-mist p-8 md:p-10">
         <CheckCircle2 className="size-10 text-signal" aria-hidden="true" />
-        <h2 className="heading-md mt-5">Enquiry sent</h2>
+        <h2 className="heading-md mt-5">Almost done — send it on WhatsApp</h2>
         <p className="mt-3 max-w-[52ch] text-muted">{status.message}</p>
-        <button type="button" onClick={() => setStatus({ state: "idle" })} className="btn btn-dark mt-6">
-          Send another enquiry
-        </button>
+        <div className="mt-6 flex flex-wrap gap-3">
+          {status.waUrl ? (
+            <a href={status.waUrl} target="_blank" rel="noopener noreferrer" className="btn btn-signal">
+              Open WhatsApp
+            </a>
+          ) : null}
+          <a href={siteConfig.contact.phoneHref} className="btn btn-light">
+            Call {siteConfig.contact.phoneDisplay}
+          </a>
+          <button type="button" onClick={() => setStatus({ state: "idle" })} className="btn btn-dark">
+            Send another enquiry
+          </button>
+        </div>
       </div>
     );
   }
@@ -122,7 +139,7 @@ export function ContactForm() {
       .join(" ") || undefined;
 
   return (
-    <form ref={formRef} onSubmit={onSubmit} noValidate className="grid gap-5" aria-describedby={`${formId}-required`}>
+    <form ref={formRef} onSubmit={onSubmit} method="post" noValidate className="grid gap-5" aria-describedby={`${formId}-required`}>
       <p id={`${formId}-required`} className="text-sm text-muted">
         Fields marked <span aria-hidden="true">*</span>
         <span className="sr-only">with an asterisk</span> are required.
@@ -288,11 +305,11 @@ export function ContactForm() {
         <button type="submit" disabled={submitting} className="btn btn-signal min-w-48 disabled:cursor-wait disabled:opacity-80">
           {submitting ? (
             <>
-              <Loader2 className="size-4 animate-spin" aria-hidden="true" /> Sending…
+              <Loader2 className="size-4 animate-spin" aria-hidden="true" /> Opening WhatsApp…
             </>
           ) : (
             <>
-              Send Enquiry <ArrowUpRight className="size-4" aria-hidden="true" />
+              Send on WhatsApp <ArrowUpRight className="size-4" aria-hidden="true" />
             </>
           )}
         </button>

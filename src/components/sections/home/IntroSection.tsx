@@ -5,7 +5,7 @@ import { ArrowUpRight } from "lucide-react";
 import { LogoMark } from "@/components/art/Logo";
 import { TagLabel } from "@/components/ui/TagLabel";
 
-const audiences = ["Startup founders", "Small & medium businesses", "Growing companies", "Entrepreneurs"];
+const audiences = ["Shops & showrooms", "Clinics & healthcare", "Coaching institutes", "Real estate", "Restaurants & cafés", "Startups & D2C brands"];
 
 /** Theme's About block: oversized statement with an inline pill, then three columns. */
 export function IntroSection() {
@@ -14,7 +14,7 @@ export function IntroSection() {
       <div className="container-site">
         <TagLabel>About us</TagLabel>
         <h2 id="intro-title" className="mt-6 max-w-[24ch] text-[clamp(1.9rem,4.4vw,4rem)] font-medium leading-[1.06] tracking-[-0.05em]" data-split="scrub">
-          We design, build and run the technology businesses depend on — so you can work with one partner from first idea to steady growth.{" "}
+          We&rsquo;re a Delhi team that plans, creates and runs your whole online presence — posts, ads, video, website and reputation — so customers find you, trust you and get in touch.{" "}
           <Link
             href="/contact"
             className="btn btn-dark relative -top-1 inline-flex align-middle text-sm"
@@ -28,7 +28,7 @@ export function IntroSection() {
             <div>
               <LogoMark className="w-12" />
               <p className="mt-5 max-w-[30ch] font-medium leading-snug tracking-[-0.02em]">
-                Who we work with: organisations that need technology to do real work — win customers, run operations and scale.
+                Who we work with: local and growing businesses across Delhi NCR that want more enquiries, not just more likes.
               </p>
             </div>
             <ul className="flex flex-wrap gap-2" aria-label="Who we serve">
@@ -56,14 +56,14 @@ export function IntroSection() {
           </div>
 
           <div className="flex flex-col gap-5">
-            <p className="text-lg font-medium leading-snug tracking-[-0.03em]">Why integrated technology matters</p>
+            <p className="text-lg font-medium leading-snug tracking-[-0.03em]">Why one team works better</p>
             <p className="text-muted">
-              A website that isn&rsquo;t connected to your CRM loses leads. A campaign without proper tracking wastes budget. Software on
-              poorly managed hosting goes down at the worst moment.
+              A great Reel is wasted if your profile link opens a slow website. Ads burn money if nobody tracks which ones bring calls.
+              Five-star work goes unnoticed if your Google reviews say otherwise.
             </p>
             <p className="text-muted">
-              When development, marketing, infrastructure and automation are planned together, the pieces support each other — and
-              you have one accountable team instead of several vendors pointing at one another.
+              When the same team handles your social media, ads, video, website, PR and SEO, every piece supports the others — and
+              you have one person to call in Rohini instead of four vendors blaming each other.
             </p>
           </div>
         </div>

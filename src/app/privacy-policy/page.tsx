@@ -58,6 +58,13 @@ export default function PrivacyPolicyPage() {
         their services. We may disclose information where required by law.
       </p>
 
+      <h2>WhatsApp enquiries</h2>
+      <p>
+        When you submit the enquiry form, your browser opens WhatsApp with your details pre-filled as a message to our business
+        number. Nothing is sent until you press Send in WhatsApp. Messages sent through WhatsApp are handled by WhatsApp (Meta)
+        under its own terms and privacy policy. A copy of the form may also be emailed to our team.
+      </p>
+
       <h2>Cookies and analytics</h2>
       <p>
         We use Google Tag Manager and Google Analytics 4 to understand how visitors use this website — for example which pages

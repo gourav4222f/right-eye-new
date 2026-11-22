@@ -1,45 +1,45 @@
 import type { Faq } from "./services";
 
-/** General FAQs used on the homepage and contact page. */
+/** General FAQs used on the homepage and contact page. Written around real customer questions. */
 export const generalFaqs: Faq[] = [
   {
     question: "What does RightEyeTechnology do?",
     answer:
-      "We're a full-service technology company. We design and build websites, web and mobile apps and custom software; create CRMs and business systems; run SEO, ads, social media and video; manage hosting and infrastructure; engineer SaaS products; and set up AI and automation. You can work with us on one of these or on several together.",
+      "We're a digital marketing and technology company in Rohini, Delhi. We manage social media, run Google and Meta (Instagram and Facebook) ads, design and build websites, produce and edit videos and Reels, handle PR and online reputation, and do SEO. We also build CRMs, custom software and AI automation. You can start with one service or combine several.",
   },
   {
-    question: "Why work with one partner instead of separate agencies?",
+    question: "Where is your office?",
     answer:
-      "When the people building your website also understand your CRM, hosting and marketing, fewer things fall between the gaps. Tracking is set up correctly, leads flow into the right system and changes in one area are planned with the others in mind. You also have one point of contact and one project plan.",
+      "Our office is in Rohini, New Delhi, near Rithala Metro Station. Part of the team works from the office and part works remotely across Delhi NCR. We meet clients in person for strategy sessions and shoots, and work online the rest of the time. Please call before visiting.",
   },
   {
-    question: "How does a project start?",
+    question: "Which areas of Delhi NCR do you serve?",
     answer:
-      "Send us an enquiry with a short description of what you need. We'll arrange a call to understand your goals and constraints, then share a written proposal with scope, timeline and cost. Work begins once the scope is agreed.",
+      "All of Delhi NCR — Rohini, Pitampura, Shalimar Bagh, Prashant Vihar, Netaji Subhash Place, Model Town, Janakpuri, Dwarka and the rest of Delhi, plus Gurugram, Noida, Ghaziabad, Faridabad and Sonipat. We also work remotely with businesses across India.",
   },
   {
-    question: "How long do projects usually take?",
+    question: "How much does digital marketing cost in Delhi?",
     answer:
-      "It depends on scope. A focused business website often takes three to six weeks; custom software, apps and SaaS products typically take a few months and are delivered in stages. Marketing and managed services are ongoing. We give a specific timeline after scoping.",
+      "It depends on what you need. Social media management is billed monthly based on platforms and content volume; ads are billed as a management fee, with ad spend paid directly to Google or Meta; websites and videos are quoted per project. After a short call we send a written quote that lists exactly what's included.",
   },
   {
-    question: "How is pricing decided?",
+    question: "Why work with one team instead of separate agencies?",
     answer:
-      "Fixed-scope projects are quoted as a fixed price with milestone payments. Ongoing work such as marketing, maintenance and hosting is billed monthly. Larger or evolving products can be billed by sprint. Every proposal itemises what's included.",
+      "Because your posts, ads, website and reviews affect each other. When one team runs them, the ad sends people to a page built to convert, the Reel links to a working WhatsApp button, and reports show what's actually bringing enquiries. You also have a single point of contact.",
   },
   {
-    question: "Do you provide maintenance and support after launch?",
+    question: "How quickly will we see results?",
     answer:
-      "Yes. We offer maintenance plans covering updates, security, backups, monitoring and a set amount of support time each month. If you prefer to maintain the product in-house, we hand over documentation and access.",
+      "Ads can bring enquiries within days of launch. A consistent, professional social media presence usually shows better engagement within one to two months. SEO builds over three to six months or more. We set realistic expectations at the start and report on progress every month.",
   },
   {
-    question: "Do you work with businesses outside India?",
+    question: "Will our accounts stay in our name?",
     answer:
-      "Our focus is on businesses in India, and we can also work with international clients remotely. We agree communication times and invoicing arrangements at the start.",
+      "Yes. Your domain, website, social media pages, ad accounts, Google Business Profile and analytics are always registered to your business, with us added as managers. If you ever stop working with us, you keep everything.",
   },
   {
-    question: "What should I include in my enquiry?",
+    question: "How do we get started?",
     answer:
-      "A few lines about your business, what you want to achieve, any existing website or systems, your preferred timeline and a budget range if you have one. Don't worry if you're unsure about the technical details — that's what the first conversation is for.",
+      "Fill in the enquiry form — it opens WhatsApp with your details — or call us. We'll ask a few questions about your business and goals, then send a written proposal with scope, timeline and cost. Work starts once you approve it.",
   },
 ];

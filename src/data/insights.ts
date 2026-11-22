@@ -4,6 +4,8 @@
  * it out of listings, the sitemap and static generation.
  */
 
+import { delhiArticles } from "./insights-delhi";
+
 export type ArticleBlock =
   | { type: "p"; text: string }
   | { type: "h2"; text: string; id: string }
@@ -266,7 +268,7 @@ export const articles: Article[] = [
   },
 ];
 
-export const publishedArticles = articles
+export const publishedArticles = [...articles, ...delhiArticles]
   .filter((a) => a.status === "published")
   .toSorted((a, b) => b.publishedAt.localeCompare(a.publishedAt));
 

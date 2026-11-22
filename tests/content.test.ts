@@ -15,7 +15,7 @@ describe("team publication gate", () => {
 
   it("only shows photos of verified team members", () => {
     expect(teamMembers.filter((m) => m.profileImage && !m.isVerified)).toHaveLength(0);
-    expect(teamMembers.filter((m) => m.reportsTo !== null).every((m) => m.reportsTo === "shravan-thakur")).toBe(true);
+    expect(teamMembers.filter((m) => m.reportsTo !== null).every((m) => m.reportsTo === "rakesh")).toBe(true);
   });
 });
 
@@ -43,6 +43,6 @@ describe("content integrity", () => {
     const urls = sitemap().map((e) => e.url);
     expect(new Set(urls).size).toBe(urls.length);
     expect(urls.some((u) => u.includes("/api/"))).toBe(false);
-    expect(urls).toHaveLength(11 + 6 + 6 + 6 + 3);
+    expect(urls).toHaveLength(11 + 6 + 6 + 6 + 6);
   });
 });

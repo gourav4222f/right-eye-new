@@ -1,13 +1,15 @@
-import { Bot, Cloud, Code2, Layers, LineChart, Workflow } from "lucide-react";
+import { Bot, Clapperboard, Code2, Megaphone, Newspaper, SearchCheck, Share2, Workflow } from "lucide-react";
 import { Marquee } from "@/components/ui/Marquee";
 
 const capabilities = [
-  { label: "Digital Product Development", Icon: Code2 },
-  { label: "Business Software", Icon: Workflow },
-  { label: "Digital Growth", Icon: LineChart },
-  { label: "Cloud Infrastructure", Icon: Cloud },
-  { label: "SaaS Development", Icon: Layers },
-  { label: "AI & Automation", Icon: Bot },
+  { label: "Social Media Management", Icon: Share2 },
+  { label: "Google & Meta Ads", Icon: Megaphone },
+  { label: "Website Development", Icon: Code2 },
+  { label: "Video Production", Icon: Clapperboard },
+  { label: "PR & Reputation", Icon: Newspaper },
+  { label: "SEO & Content", Icon: SearchCheck },
+  { label: "CRM & Software", Icon: Workflow },
+  { label: "AI Automation", Icon: Bot },
 ];
 
 /** Theme's brand ticker, repurposed to introduce the six capability areas (no client logos). */

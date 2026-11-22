@@ -6,6 +6,7 @@ import { CoverImage } from "@/components/ui/CoverImage";
 import { LocalTime } from "@/components/ui/LocalTime";
 import { images } from "@/config/assets";
 import { siteConfig } from "@/config/site";
+import { SocialIcons } from "@/components/ui/SocialIcons";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
@@ -37,7 +38,8 @@ export default function ContactPage() {
               Project enquiry
             </h2>
             <p className="mt-3 max-w-[56ch] text-muted">
-              Your enquiry goes directly to {contact.email}. We use your details only to respond.
+              When you press send, WhatsApp opens with your enquiry filled in for our team — just tap Send. We use your
+              details only to respond.
             </p>
             <div className="mt-8">
               <ContactForm />
@@ -98,6 +100,10 @@ export default function ContactPage() {
               <p className="mt-6 border-t border-white/10 pt-5 text-sm text-white/70">
                 <LocalTime label="Our local time" />
               </p>
+              <div className="mt-5 border-t border-white/10 pt-5">
+                <p className="mb-3 text-xs text-white/60">Follow us</p>
+                <SocialIcons tone="light" />
+              </div>
             </div>
 
             <div className="rounded-[var(--radius-card)] bg-mist p-6 md:p-8">

@@ -81,8 +81,8 @@ export function HomeHero() {
               </span>
             </Link>
             <p data-split="lines" data-delay="0.45" className="max-w-[34ch] text-[0.975rem] leading-relaxed text-white">
-              From digital products and custom software to marketing, cloud infrastructure and intelligent automation,{" "}
-              {siteConfig.name} helps businesses turn technology requirements into practical digital solutions.
+              From our office in Rohini, we manage social media, run Google and Meta ads, build websites, shoot and edit video,
+              and handle PR and SEO for businesses across Delhi NCR.
             </p>
           </div>
 
@@ -91,7 +91,7 @@ export function HomeHero() {
               {siteConfig.tagline}
             </p>
             <h1 id="hero-title" data-split="rise" data-delay="0.1" className="display-hero mt-4 text-white">
-              Technology that builds, connects &amp; grows your business.
+              Social media, ads &amp; websites that grow Delhi businesses.
             </h1>
             <div data-reveal data-delay="0.7" className="mt-8 flex flex-wrap gap-3">
               <ButtonLink href="/contact" variant="dark">

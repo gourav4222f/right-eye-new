@@ -22,7 +22,7 @@ export interface TeamMember {
   department: Department;
   /** `id` of the person this member reports to, or null for the founder. */
   reportsTo: string | null;
-  /** Path under /public, e.g. "/images/team/shravan-thakur.webp". Empty until a real photo is supplied. */
+  /** Path under /public, e.g. "/images/team/rakesh.webp". Empty until a real photo is supplied. */
   profileImage: string;
   /** Approved biography, 2–3 sentences. Empty until provided by the person. */
   biography: string;
@@ -38,8 +38,8 @@ export interface TeamMember {
 
 export const teamMembers: TeamMember[] = [
   {
-    id: "shravan-thakur",
-    name: "Shravan Thakur",
+    id: "rakesh",
+    name: "Rakesh",
     designation: "Founder & CEO",
     department: "Leadership",
     reportsTo: null,
@@ -57,7 +57,7 @@ export const teamMembers: TeamMember[] = [
     name: "TBC",
     designation: "TBC",
     department: "Growth & Marketing",
-    reportsTo: "shravan-thakur",
+    reportsTo: "rakesh",
     profileImage: "/images/team/member-1.webp",
     biography: "",
     yearsExperience: 0,
@@ -72,7 +72,7 @@ export const teamMembers: TeamMember[] = [
     name: "TBC",
     designation: "TBC",
     department: "Growth & Marketing",
-    reportsTo: "shravan-thakur",
+    reportsTo: "rakesh",
     profileImage: "/images/team/member-2.webp",
     biography: "",
     yearsExperience: 0,
@@ -87,7 +87,7 @@ export const teamMembers: TeamMember[] = [
     name: "TBC",
     designation: "TBC",
     department: "Growth & Marketing",
-    reportsTo: "shravan-thakur",
+    reportsTo: "rakesh",
     profileImage: "/images/team/member-3.webp",
     biography: "",
     yearsExperience: 0,
@@ -102,7 +102,7 @@ export const teamMembers: TeamMember[] = [
     name: "TBC",
     designation: "TBC",
     department: "Growth & Marketing",
-    reportsTo: "shravan-thakur",
+    reportsTo: "rakesh",
     profileImage: "/images/team/member-4.webp",
     biography: "",
     yearsExperience: 0,
@@ -117,7 +117,7 @@ export const teamMembers: TeamMember[] = [
     name: "TBC",
     designation: "TBC",
     department: "Growth & Marketing",
-    reportsTo: "shravan-thakur",
+    reportsTo: "rakesh",
     profileImage: "/images/team/member-5.webp",
     biography: "",
     yearsExperience: 0,
@@ -132,7 +132,7 @@ export const teamMembers: TeamMember[] = [
     name: "TBC",
     designation: "TBC",
     department: "Growth & Marketing",
-    reportsTo: "shravan-thakur",
+    reportsTo: "rakesh",
     profileImage: "/images/team/member-6.webp",
     biography: "",
     yearsExperience: 0,
@@ -147,7 +147,7 @@ export const teamMembers: TeamMember[] = [
     name: "TBC",
     designation: "TBC",
     department: "Growth & Marketing",
-    reportsTo: "shravan-thakur",
+    reportsTo: "rakesh",
     profileImage: "/images/team/member-7.webp",
     biography: "",
     yearsExperience: 0,
@@ -162,7 +162,7 @@ export const teamMembers: TeamMember[] = [
     name: "TBC",
     designation: "TBC",
     department: "Growth & Marketing",
-    reportsTo: "shravan-thakur",
+    reportsTo: "rakesh",
     profileImage: "/images/team/member-8.webp",
     biography: "",
     yearsExperience: 0,

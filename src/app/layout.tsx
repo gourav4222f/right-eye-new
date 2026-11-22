@@ -6,6 +6,7 @@ import { Header } from "@/components/layout/Header";
 import { MotionProvider } from "@/components/motion/MotionProvider";
 import { GoogleTagManager, GoogleTagManagerNoScript } from "@/components/seo/GoogleTagManager";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { siteConfig, siteUrl } from "@/config/site";
 import { organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 
@@ -44,7 +45,8 @@ export const metadata: Metadata = {
     title: siteConfig.seo.defaultTitle,
     description: siteConfig.description,
   },
-  robots: { index: true, follow: true },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 } },
+  ...(siteConfig.searchConsoleVerification ? { verification: { google: siteConfig.searchConsoleVerification } } : {}),
 };
 
 export const viewport: Viewport = {
@@ -78,6 +80,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           {children}
         </main>
         <Footer />
+        <WhatsAppButton />
         <MotionProvider />
         <JsonLd data={[organizationJsonLd(), websiteJsonLd()]} />
         <GoogleTagManager />

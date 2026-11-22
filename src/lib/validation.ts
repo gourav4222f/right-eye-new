@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { focusServices } from "@/data/focus-services";
 import { serviceDivisions } from "@/data/services";
 
 /**
@@ -7,7 +8,8 @@ import { serviceDivisions } from "@/data/services";
  */
 
 export const serviceOptions = [
-  ...serviceDivisions.map((d) => d.name),
+  ...focusServices.map((s) => s.name),
+  ...serviceDivisions.filter((d) => d.slug !== "digital-growth-marketing").map((d) => d.name),
   "Not sure yet — need advice",
 ] as const;
 

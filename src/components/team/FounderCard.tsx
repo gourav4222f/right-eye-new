@@ -39,7 +39,7 @@ export function FounderCard() {
           <p className="mt-5 max-w-[60ch] text-muted">{founder.biography}</p>
         ) : (
           <p className="mt-5 max-w-[60ch] text-muted">
-            Shravan founded RightEyeTechnology to give businesses one dependable technology partner — a team that can plan, build,
+            Rakesh founded RightEyeTechnology to give businesses one dependable technology partner — a team that can plan, build,
             market and maintain their digital systems together. He leads the company&rsquo;s direction and oversees how projects are
             scoped and delivered.
           </p>

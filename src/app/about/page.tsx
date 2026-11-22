@@ -12,9 +12,9 @@ import { serviceDivisions } from "@/data/services";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "About Us — A Full-Service Technology Partner",
+  title: "About Us — Digital Marketing & Technology Team in Rohini, Delhi",
   description:
-    "RightEyeTechnology is a full-service technology company founded by Shravan Thakur, helping businesses in India build, connect and grow with integrated development, marketing, cloud and AI services.",
+    "Meet RightEyeTechnology, a digital marketing and technology company in Rohini, Delhi, founded by Rakesh. Social media, ads, websites, video, PR and SEO for businesses across Delhi NCR.",
   path: "/about",
 });
 
@@ -42,7 +42,7 @@ export default function AboutPage() {
     <>
       <PageHero
         title="One technology partner, from idea to growth"
-        intro={`${siteConfig.name} brings development, business software, marketing, cloud infrastructure, SaaS engineering and AI automation together — so your technology works as one system, with one accountable team.`}
+        intro={`${siteConfig.name} is a Rohini-based team for social media, ads, websites, video, PR and SEO — plus the software and automation behind them — so your online presence works as one system, with one accountable team.`}
         breadcrumbs={[{ name: "About", path: "/about" }]}
         actions={
           <>
@@ -80,8 +80,9 @@ export default function AboutPage() {
               talk to each other, and no one responsible for the whole picture. {siteConfig.name} was set up to close those gaps.
             </p>
             <p>
-              We serve startup founders, small and medium businesses and growing companies, primarily in India. Whether you need one
-              service or several, you get a single team that understands how the pieces fit together.
+              We work from Rohini, near Rithala Metro, with a hybrid team spread across Delhi NCR. Our clients are shops, clinics,
+              coaching institutes, property consultants, restaurants and growing brands — primarily in Delhi NCR, and remotely across
+              India. Whether you need one service or several, you get a single team that understands how the pieces fit together.
             </p>
           </div>
         </div>
