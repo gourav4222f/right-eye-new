@@ -1,3 +1,4 @@
+import { focusServices } from "@/data/focus-services";
 import { serviceDivisions } from "@/data/services";
 import { industrySolutions } from "@/data/solutions";
 
@@ -26,10 +27,10 @@ export const mainNavigation: NavItem[] = [
     label: "Services",
     href: "/services",
     variant: "mega",
-    links: serviceDivisions.map((d) => ({
-      label: d.name,
-      href: `/services/${d.slug}`,
-      description: d.summary,
+    links: focusServices.map((s) => ({
+      label: s.name,
+      href: `/services/${s.slug}`,
+      description: s.summary,
     })),
   },
   {
@@ -53,12 +54,14 @@ export const mainNavigation: NavItem[] = [
 ];
 
 export const footerNavigation = {
-  services: serviceDivisions.map((d) => ({ label: d.shortName, href: `/services/${d.slug}` })),
+  services: focusServices.map((s) => ({ label: s.shortName, href: `/services/${s.slug}` })),
+  divisions: serviceDivisions.map((d) => ({ label: d.shortName, href: `/services/${d.slug}` })),
   solutions: industrySolutions.map((s) => ({ label: s.name, href: `/solutions/${s.slug}` })),
   company: [
     { label: "About", href: "/about" },
     { label: "How we work", href: "/how-we-work" },
     { label: "Our work", href: "/work" },
+    { label: "Areas we serve", href: "/locations/delhi-ncr" },
     { label: "Insights", href: "/insights" },
     { label: "Contact", href: "/contact" },
   ],

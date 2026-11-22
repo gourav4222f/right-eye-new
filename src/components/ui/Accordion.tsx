@@ -46,7 +46,7 @@ export function Accordion({ items, tone = "light", defaultOpen = 0 }: { items: A
                   className={cn(
                     "grid size-7 shrink-0 place-items-center rounded-full text-xs font-semibold tabular-nums",
                     tone === "dark" ? "bg-white text-ink" : "bg-ink text-white",
-                    isOpen && "bg-signal text-white",
+                    isOpen && "bg-signal-strong text-white",
                   )}
                   aria-hidden="true"
                 >

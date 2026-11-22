@@ -21,6 +21,8 @@
   --color-graphite: #0f0f0f;
   /* Theme primary. Use for fills and large text; contrast on white is 3.6:1. */
   --color-signal: #f0460e;
+  /* Darker signal for small white text on orange (buttons, chips): 4.78:1 contrast, WCAG AA. */
+  --color-signal-strong: #d23c0a;
   /* Text-safe orange for small text on light backgrounds (≈ 5.9:1). */
   --color-ember: #b83208;
   --color-glow: #ff7a45;
@@ -196,8 +198,8 @@ a, button, [role="button"], summary, label[for] { touch-action: manipulation; }
   }
   .btn:active { transform: scale(0.98); }
   .btn-dark { background: var(--color-ink); color: var(--color-paper); }
-  .btn-dark:hover { background: var(--color-signal); }
-  .btn-signal { background: var(--color-signal); color: #fff; }
+  .btn-dark:hover { background: var(--color-signal-strong); }
+  .btn-signal { background: var(--color-signal-strong); color: #fff; }
   .btn-signal:hover { background: var(--color-ink); }
   .btn-light { background: #fff; color: var(--color-ink); }
   .btn-light:hover { background: var(--color-ink); color: #fff; }
@@ -218,7 +220,7 @@ a, button, [role="button"], summary, label[for] { touch-action: manipulation; }
   .btn-pair { display: inline-flex; align-items: center; gap: 2px; }
   .btn-pair .btn-orb svg { transition: transform 0.45s var(--ease-basic); }
   .btn-pair:hover .btn-orb svg { transform: rotate(45deg); }
-  .btn-pair:hover .btn, .btn-pair:hover .btn-orb { background: var(--color-signal); color: #fff; }
+  .btn-pair:hover .btn, .btn-pair:hover .btn-orb { background: var(--color-signal-strong); color: #fff; }
   .on-signal .btn-pair:hover .btn, .on-signal .btn-pair:hover .btn-orb { background: var(--color-ink); color: #fff; }
 
   .link-underline {

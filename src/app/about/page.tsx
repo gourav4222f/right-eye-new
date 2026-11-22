@@ -6,8 +6,7 @@ import { differentiators } from "@/components/sections/home/WhyChooseUs";
 import { PageHero } from "@/components/sections/PageHero";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { TagLabel } from "@/components/ui/TagLabel";
-import { CoverImage } from "@/components/ui/CoverImage";
-import { images } from "@/config/assets";
+import { TeamMosaic } from "@/components/team/TeamMosaic";
 import { siteConfig } from "@/config/site";
 import { serviceDivisions } from "@/data/services";
 import { buildMetadata } from "@/lib/seo";
@@ -57,7 +56,10 @@ export default function AboutPage() {
         }
       />
 
-      <CoverImage image={images.teamWide} priority parallax={14} sizes="100vw" className="panel mt-2 aspect-[16/9] md:aspect-[21/8] lg:mt-3" />
+      <div className="container-site mt-6 lg:mt-8">
+        <TeamMosaic priority />
+        <p className="mt-3 text-sm text-muted">The RightEyeTechnology team — working from our Rohini office and across Delhi NCR.</p>
+      </div>
 
       <section className="section-pad" aria-labelledby="story-title">
         <div className="container-site grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)] lg:gap-16">

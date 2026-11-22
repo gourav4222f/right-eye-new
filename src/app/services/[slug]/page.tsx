@@ -11,6 +11,8 @@ import { PageHero } from "@/components/sections/PageHero";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { TagLabel } from "@/components/ui/TagLabel";
+import { FocusServicePage } from "@/components/services/FocusServicePage";
+import { focusServices, getFocusService } from "@/data/focus-services";
 import { divisionBySlug, getDivision, serviceDivisions } from "@/data/services";
 import { solutionBySlug } from "@/data/solutions";
 import { buildMetadata, serviceJsonLd } from "@/lib/seo";
@@ -20,11 +22,15 @@ import { buildMetadata, serviceJsonLd } from "@/lib/seo";
 export const instant = false;
 
 export function generateStaticParams() {
-  return serviceDivisions.map((d) => ({ slug: d.slug }));
+  return [...focusServices, ...serviceDivisions].map((d) => ({ slug: d.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps<"/services/[slug]">): Promise<Metadata> {
   const { slug } = await params;
+  const focus = getFocusService(slug);
+  if (focus) {
+    return buildMetadata({ title: focus.metaTitle, description: focus.metaDescription, path: `/services/${focus.slug}`, defaultImage: false });
+  }
   const division = getDivision(slug);
   if (!division) return {};
   return buildMetadata({
@@ -37,6 +43,8 @@ export async function generateMetadata({ params }: PageProps<"/services/[slug]">
 
 export default async function ServiceDivisionPage({ params }: PageProps<"/services/[slug]">) {
   const { slug } = await params;
+  const focus = getFocusService(slug);
+  if (focus) return <FocusServicePage service={focus} />;
   const division = getDivision(slug);
   if (!division) notFound();
 

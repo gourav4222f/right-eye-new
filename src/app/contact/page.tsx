@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Mail, MessageCircle, Phone } from "lucide-react";
+import { Mail, MessageCircle, Phone, MapPin } from "lucide-react";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { PageHero } from "@/components/sections/PageHero";
 import { CoverImage } from "@/components/ui/CoverImage";
@@ -10,7 +10,7 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
   title: "Contact Us — Start a Project",
-  description: `Tell RightEyeTechnology about your website, app, software, marketing, hosting or automation project. Email ${siteConfig.contact.email} or call ${siteConfig.contact.phoneDisplay}.`,
+  description: `Contact RightEyeTechnology in Rohini, Delhi (near Rithala Metro) about social media, ads, websites, video, PR, SEO or software. Email ${siteConfig.contact.email} or call ${siteConfig.contact.phoneDisplay}.`,
   path: "/contact",
 });
 
@@ -67,6 +67,17 @@ export default function ContactPage() {
                     <span className="min-w-0">
                       <span className="block text-xs text-white/60">Email</span>
                       <span className="link-underline break-all font-medium">{contact.email}</span>
+                    </span>
+                  </a>
+                </li>
+                <li>
+                  <a href={siteConfig.address.mapUrl} target="_blank" rel="noopener noreferrer" className="group flex min-h-11 items-center gap-4">
+                    <span className="grid size-11 shrink-0 place-items-center rounded-full bg-white text-ink">
+                      <MapPin className="size-5" aria-hidden="true" />
+                    </span>
+                    <span>
+                      <span className="block text-xs text-white/60">Office</span>
+                      <span className="link-underline font-medium">{siteConfig.address.display}</span>
                     </span>
                   </a>
                 </li>

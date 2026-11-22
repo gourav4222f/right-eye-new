@@ -13,9 +13,8 @@ describe("team publication gate", () => {
     expect(publishedTeam.every((m) => m.name !== "TBC")).toBe(true);
   });
 
-  it("keeps the team to 4-6 profiles reporting to the founder", () => {
-    expect(teamMembers.length).toBeGreaterThanOrEqual(4);
-    expect(teamMembers.length).toBeLessThanOrEqual(6);
+  it("only shows photos of verified team members", () => {
+    expect(teamMembers.filter((m) => m.profileImage && !m.isVerified)).toHaveLength(0);
     expect(teamMembers.filter((m) => m.reportsTo !== null).every((m) => m.reportsTo === "shravan-thakur")).toBe(true);
   });
 });
@@ -44,6 +43,6 @@ describe("content integrity", () => {
     const urls = sitemap().map((e) => e.url);
     expect(new Set(urls).size).toBe(urls.length);
     expect(urls.some((u) => u.includes("/api/"))).toBe(false);
-    expect(urls).toHaveLength(10 + 6 + 6 + 3);
+    expect(urls).toHaveLength(11 + 6 + 6 + 6 + 3);
   });
 });

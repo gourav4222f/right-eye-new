@@ -4,6 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 import { DivisionGlyph } from "@/components/art/DivisionGlyph";
 import { CtaBanner } from "@/components/sections/CtaBanner";
 import { PageHero } from "@/components/sections/PageHero";
+import { FocusServices } from "@/components/sections/home/FocusServices";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { capabilityCount, serviceDivisions } from "@/data/services";
 import { buildMetadata } from "@/lib/seo";
@@ -34,10 +35,12 @@ export default function ServicesPage() {
         }
       />
 
-      <section className="section-pad" aria-labelledby="divisions-title">
+      <FocusServices />
+
+      <section className="pb-20 lg:pb-28" aria-labelledby="divisions-title">
         <div className="container-site">
-          <h2 id="divisions-title" className="sr-only">
-            Service divisions
+          <h2 id="divisions-title" className="heading-lg mb-10 max-w-[18ch]">
+            All six service divisions
           </h2>
           <ul className="grid gap-4 md:grid-cols-2" data-reveal-stagger>
             {serviceDivisions.map((d) => (

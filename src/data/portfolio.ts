@@ -50,6 +50,7 @@ export const projectsDelivered = "200+";
 export const portfolioProjects: PortfolioProject[] = [
   {
     slug: "pp-the-traveller",
+    image: "/images/work/pp-the-traveller.webp",
     name: "PP The Traveller",
     url: "https://ppthetraveller.com/",
     sector: "Tours & travel agency",
@@ -64,6 +65,7 @@ export const portfolioProjects: PortfolioProject[] = [
   },
   {
     slug: "elite-properties",
+    image: "/images/work/elite-properties.webp",
     name: "Elite Properties",
     url: "https://www.eliteproperties4u.co.in/",
     sector: "Real estate",
@@ -77,6 +79,7 @@ export const portfolioProjects: PortfolioProject[] = [
   },
   {
     slug: "rana-ambulance-service",
+    image: "/images/work/rana-ambulance-service.webp",
     name: "Rana Ambulance Service",
     url: "https://ranaambulanceservice.in.net/",
     sector: "Emergency medical transport",
@@ -90,6 +93,7 @@ export const portfolioProjects: PortfolioProject[] = [
   },
   {
     slug: "jamnagar-cab-line",
+    image: "/images/work/jamnagar-cab-line.webp",
     name: "Jamnagar Cab Line",
     url: "https://jamnagarcabline.net/",
     sector: "Taxi & cab service",
@@ -103,6 +107,7 @@ export const portfolioProjects: PortfolioProject[] = [
   },
   {
     slug: "mathura-cab-hub",
+    image: "/images/work/mathura-cab-hub.webp",
     name: "Mathura Cab Hub",
     url: "https://mathuracabhub.com/",
     sector: "Taxi & tour operator",
@@ -116,6 +121,7 @@ export const portfolioProjects: PortfolioProject[] = [
   },
   {
     slug: "taxi-hire-gujarat",
+    image: "/images/work/taxi-hire-gujarat.webp",
     name: "Taxi Hire Gujarat",
     url: "https://taxihiregujarat.com/",
     sector: "Taxi & cab service",

@@ -6,7 +6,7 @@ type Variant = "dark" | "signal" | "light" | "outline";
 
 const orbStyles: Record<Variant, string> = {
   dark: "bg-ink text-paper",
-  signal: "bg-signal text-white",
+  signal: "bg-signal-strong text-white",
   light: "bg-white text-ink",
   outline: "border border-current",
 };

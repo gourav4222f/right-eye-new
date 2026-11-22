@@ -61,7 +61,27 @@ export const siteConfig = {
   alternateNames: ["RightEye Technology", "Right Eye Technology"],
   tagline: "One Technology Partner. From Idea to Growth.",
   description:
-    "RightEyeTechnology is a full-service technology company in India. We build websites, web and mobile apps, custom software and CRMs, and run digital marketing, cloud hosting, SaaS engineering and AI automation for growing businesses.",
+    "RightEyeTechnology is a digital marketing and technology company in Rohini, Delhi. We manage social media, run Google and Meta ads, build websites, produce and edit video, handle PR and SEO, and build custom software for businesses across Delhi NCR and India.",
+  /**
+   * Office address. Shown on the site and in LocalBusiness schema, so it must
+   * match Google Business Profile exactly. TODO: add the street/building and PIN code.
+   */
+  address: {
+    streetAddress: "",
+    landmark: "Near Rithala Metro Station",
+    locality: "Rohini",
+    city: "New Delhi",
+    region: "Delhi",
+    postalCode: "",
+    country: "IN",
+    display: "Rohini, New Delhi (near Rithala Metro Station)",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=Rithala+Metro+Station+Rohini+Delhi",
+  },
+  /**
+   * Opening hours. TODO: confirm, then fill in (e.g. days Mon–Sat, opens "10:00", closes "19:00").
+   * Left empty, hours are hidden on the site and in schema.
+   */
+  hours: { label: "", days: [] as string[], opens: "", closes: "" },
   founder: {
     name: "Shravan Thakur",
     role: "Founder & CEO",
@@ -90,9 +110,17 @@ export const siteConfig = {
   social: socialLinks,
   seo: {
     titleTemplate: "%s | RightEyeTechnology",
-    defaultTitle: "RightEyeTechnology — Websites, Software, Marketing, Cloud & AI",
+    defaultTitle: "RightEyeTechnology — Digital Marketing, Social Media, Ads, Video, PR & Websites in Delhi",
     keywords: [
-      "technology company India",
+      "digital marketing agency in Delhi",
+      "social media marketing agency Delhi",
+      "social media management Rohini",
+      "Google Ads agency Delhi",
+      "Meta ads agency Delhi",
+      "website development company Delhi",
+      "video production Delhi",
+      "PR agency Delhi",
+      "SEO company Delhi",
       "website development",
       "web application development",
       "mobile app development",

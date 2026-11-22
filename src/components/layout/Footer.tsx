@@ -13,7 +13,7 @@ async function CopyrightYear() {
 }
 
 export function Footer() {
-  const { contact, social, whatsapp } = siteConfig;
+  const { contact, social, whatsapp, address } = siteConfig;
   return (
     <footer data-footer-reveal className="panel on-dark mb-2 mt-2 bg-graphite pt-14 text-white lg:mb-3 lg:pt-16">
       <div className="container-site">
@@ -33,6 +33,10 @@ export function Footer() {
             >
               {contact.email}
             </a>
+            <a href={address.mapUrl} target="_blank" rel="noopener noreferrer" className="link-underline text-sm text-white/75">
+              Office: {address.streetAddress ? `${address.streetAddress}, ` : ""}
+              {address.display}
+            </a>
             {(social.length > 0 || whatsapp.enabled) && (
               <ul className="mt-3 flex flex-wrap gap-2 lg:justify-end" aria-label="Social profiles">
                 {whatsapp.enabled && (
@@ -41,7 +45,7 @@ export function Footer() {
                       href={whatsapp.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex min-h-9 items-center gap-1 rounded-full bg-white px-3.5 text-xs font-semibold text-ink transition-colors hover:bg-signal hover:text-white"
+                      className="inline-flex min-h-9 items-center gap-1 rounded-full bg-white px-3.5 text-xs font-semibold text-ink transition-colors hover:bg-signal-strong hover:text-white"
                     >
                       WhatsApp <ArrowUpRight className="size-3.5" aria-hidden="true" />
                     </a>
@@ -53,7 +57,7 @@ export function Footer() {
                       href={s.url}
                       target="_blank"
                       rel="noopener noreferrer me"
-                      className="inline-flex min-h-9 items-center gap-1 rounded-full bg-white px-3.5 text-xs font-semibold text-ink transition-colors hover:bg-signal hover:text-white"
+                      className="inline-flex min-h-9 items-center gap-1 rounded-full bg-white px-3.5 text-xs font-semibold text-ink transition-colors hover:bg-signal-strong hover:text-white"
                     >
                       {s.label} <ArrowUpRight className="size-3.5" aria-hidden="true" />
                     </a>
@@ -64,8 +68,9 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-4 lg:mt-20">
+        <div className="mt-14 grid grid-cols-2 gap-x-6 gap-y-10 md:grid-cols-3 lg:mt-20 lg:grid-cols-5">
           <FooterColumn title="Services" links={footerNavigation.services} />
+          <FooterColumn title="Divisions" links={footerNavigation.divisions} />
           <FooterColumn title="Solutions" links={footerNavigation.solutions} />
           <FooterColumn title="Company" links={footerNavigation.company} />
           <div>

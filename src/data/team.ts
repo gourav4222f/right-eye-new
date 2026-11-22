@@ -1,9 +1,9 @@
 /**
  * Team data.
  *
- * The founder plus a small senior team (4–6 profiles). Only real people
- * appear publicly: a profile renders when BOTH `isVerified` and
- * `isPublished` are true.
+ * The founder plus the team. Only real people appear publicly: a named
+ * profile card renders when BOTH `isVerified` and `isPublished` are true.
+ * Verified members with a photo also appear (unnamed) in the team photo mosaic.
  *
  * To publish someone:
  *   1. Replace the "TBC" name with their real name.
@@ -51,47 +51,125 @@ export const teamMembers: TeamMember[] = [
     isVerified: true,
     isPublished: true,
   },
-  // ---- Role slots: fill in the real person, then publish. ----
+  // ---- Team photos supplied 2026-11-22, in order (top-left to bottom-right). Add name + role, then publish. ----
   {
-    id: "senior-developer",
+    id: "member-1",
     name: "TBC",
-    designation: "Senior Full-Stack Developer",
-    department: "Technology & Engineering",
-    reportsTo: "shravan-thakur",
-    profileImage: "",
-    biography: "",
-    yearsExperience: 0,
-    expertise: [],
-    linkedin: "",
-    isVerified: false,
-    isPublished: false,
-  },
-  {
-    id: "senior-marketing",
-    name: "TBC",
-    designation: "Senior Digital Marketing Manager",
+    designation: "TBC",
     department: "Growth & Marketing",
     reportsTo: "shravan-thakur",
-    profileImage: "",
+    profileImage: "/images/team/member-1.webp",
     biography: "",
     yearsExperience: 0,
     expertise: [],
     linkedin: "",
-    isVerified: false,
+    // Real team member (confirmed by the company). Publish once name and role are added.
+    isVerified: true,
     isPublished: false,
   },
   {
-    id: "ai-specialist",
+    id: "member-2",
     name: "TBC",
-    designation: "AI & Automation Specialist",
-    department: "AI & Automation",
+    designation: "TBC",
+    department: "Growth & Marketing",
     reportsTo: "shravan-thakur",
-    profileImage: "",
+    profileImage: "/images/team/member-2.webp",
     biography: "",
     yearsExperience: 0,
     expertise: [],
     linkedin: "",
-    isVerified: false,
+    // Real team member (confirmed by the company). Publish once name and role are added.
+    isVerified: true,
+    isPublished: false,
+  },
+  {
+    id: "member-3",
+    name: "TBC",
+    designation: "TBC",
+    department: "Growth & Marketing",
+    reportsTo: "shravan-thakur",
+    profileImage: "/images/team/member-3.webp",
+    biography: "",
+    yearsExperience: 0,
+    expertise: [],
+    linkedin: "",
+    // Real team member (confirmed by the company). Publish once name and role are added.
+    isVerified: true,
+    isPublished: false,
+  },
+  {
+    id: "member-4",
+    name: "TBC",
+    designation: "TBC",
+    department: "Growth & Marketing",
+    reportsTo: "shravan-thakur",
+    profileImage: "/images/team/member-4.webp",
+    biography: "",
+    yearsExperience: 0,
+    expertise: [],
+    linkedin: "",
+    // Real team member (confirmed by the company). Publish once name and role are added.
+    isVerified: true,
+    isPublished: false,
+  },
+  {
+    id: "member-5",
+    name: "TBC",
+    designation: "TBC",
+    department: "Growth & Marketing",
+    reportsTo: "shravan-thakur",
+    profileImage: "/images/team/member-5.webp",
+    biography: "",
+    yearsExperience: 0,
+    expertise: [],
+    linkedin: "",
+    // Real team member (confirmed by the company). Publish once name and role are added.
+    isVerified: true,
+    isPublished: false,
+  },
+  {
+    id: "member-6",
+    name: "TBC",
+    designation: "TBC",
+    department: "Growth & Marketing",
+    reportsTo: "shravan-thakur",
+    profileImage: "/images/team/member-6.webp",
+    biography: "",
+    yearsExperience: 0,
+    expertise: [],
+    linkedin: "",
+    // Real team member (confirmed by the company). Publish once name and role are added.
+    isVerified: true,
+    isPublished: false,
+  },
+  {
+    id: "member-7",
+    name: "TBC",
+    designation: "TBC",
+    department: "Growth & Marketing",
+    reportsTo: "shravan-thakur",
+    profileImage: "/images/team/member-7.webp",
+    biography: "",
+    yearsExperience: 0,
+    expertise: [],
+    linkedin: "",
+    // Real team member (confirmed by the company). Publish once name and role are added.
+    isVerified: true,
+    isPublished: false,
+  },
+  {
+    id: "member-8",
+    name: "TBC",
+    designation: "TBC",
+    department: "Growth & Marketing",
+    reportsTo: "shravan-thakur",
+    profileImage: "/images/team/member-8.webp",
+    biography: "",
+    yearsExperience: 0,
+    expertise: [],
+    linkedin: "",
+    // Real team member (confirmed by the company). Publish once name and role are added.
+    isVerified: true,
     isPublished: false,
   },
 ];
@@ -105,6 +183,12 @@ export const founder = teamMembers.find((m) => m.reportsTo === null)!;
 
 /** Published team members, excluding the founder (who has a dedicated section). */
 export const publishedTeam = teamMembers.filter((m) => isPublic(m) && m.reportsTo !== null);
+
+/** Photos of verified (real) team members, for the team mosaic. */
+export const teamPhotos = teamMembers.filter((m) => m.isVerified && m.profileImage).map((m) => ({
+  src: m.profileImage,
+  alt: isPublic(m) ? `${m.name}, ${m.designation} at RightEyeTechnology` : "RightEyeTechnology team member",
+}));
 
 /**
  * Practice areas describe how work is organised. They are capability

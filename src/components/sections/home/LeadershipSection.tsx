@@ -1,5 +1,6 @@
 import { FounderCard } from "@/components/team/FounderCard";
 import { TeamGrid } from "@/components/team/TeamGrid";
+import { TeamMosaic } from "@/components/team/TeamMosaic";
 import { TagLabel } from "@/components/ui/TagLabel";
 import { practiceAreas, publishedTeam } from "@/data/team";
 
@@ -19,6 +20,8 @@ export function LeadershipSection() {
         <div className="mt-12" data-reveal>
           <FounderCard />
         </div>
+
+        <TeamMosaic className="mt-6" />
 
         {publishedTeam.length > 0 ? (
           <div className="mt-6">

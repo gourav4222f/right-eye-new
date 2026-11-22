@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { publishedArticles } from "@/data/insights";
+import { focusServices } from "@/data/focus-services";
 import { serviceDivisions } from "@/data/services";
 import { industrySolutions } from "@/data/solutions";
 import { absoluteUrl } from "@/lib/utils";
@@ -18,6 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/about", priority: 0.7, changeFrequency: "monthly" },
     { path: "/how-we-work", priority: 0.7, changeFrequency: "monthly" },
     { path: "/work", priority: 0.8, changeFrequency: "monthly" },
+    { path: "/locations/delhi-ncr", priority: 0.9, changeFrequency: "monthly" },
     { path: "/insights", priority: 0.7, changeFrequency: "weekly" },
     { path: "/contact", priority: 0.8, changeFrequency: "yearly" },
     { path: "/privacy-policy", priority: 0.2, changeFrequency: "yearly" },
@@ -26,6 +28,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     ...staticPages.map((p) => ({ url: absoluteUrl(p.path), lastModified: CONTENT_DATE, changeFrequency: p.changeFrequency, priority: p.priority })),
+    ...focusServices.map((s) => ({
+      url: absoluteUrl(`/services/${s.slug}`),
+      lastModified: CONTENT_DATE,
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+    })),
     ...serviceDivisions.map((d) => ({
       url: absoluteUrl(`/services/${d.slug}`),
       lastModified: CONTENT_DATE,

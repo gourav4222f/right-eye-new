@@ -83,7 +83,8 @@ export function organizationJsonLd() {
     email: siteConfig.contact.email,
     telephone: siteConfig.contact.phoneE164,
     founder: { "@type": "Person", name: siteConfig.founder.name, jobTitle: siteConfig.founder.role },
-    areaServed: { "@type": "Country", name: "India" },
+    address: postalAddress(),
+    areaServed: [{ "@type": "City", name: "Delhi" }, { "@type": "Country", name: "India" }],
     contactPoint: [
       {
         "@type": "ContactPoint",
@@ -111,7 +112,56 @@ export function websiteJsonLd() {
   };
 }
 
-export function serviceJsonLd(input: { name: string; description: string; path: string; serviceTypes: string[] }) {
+function postalAddress() {
+  const a = siteConfig.address;
+  return {
+    "@type": "PostalAddress",
+    ...(a.streetAddress ? { streetAddress: a.streetAddress } : {}),
+    addressLocality: `${a.locality}, ${a.city}`,
+    addressRegion: a.region,
+    ...(a.postalCode ? { postalCode: a.postalCode } : {}),
+    addressCountry: a.country,
+  };
+}
+
+/**
+ * LocalBusiness entity for the Rohini office. Must match the Google Business
+ * Profile (name, address, phone) exactly.
+ */
+export function localBusinessJsonLd(areas: string[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "@id": `${siteUrl}/#localbusiness`,
+    name: siteConfig.name,
+    alternateName: [...siteConfig.alternateNames],
+    url: siteUrl,
+    image: absoluteUrl("/brand/logo-square.png"),
+    logo: absoluteUrl("/brand/logo-square.png"),
+    description: siteConfig.description,
+    email: siteConfig.contact.email,
+    telephone: siteConfig.contact.phoneE164,
+    address: postalAddress(),
+    hasMap: siteConfig.address.mapUrl,
+    ...(siteConfig.hours.days.length > 0
+      ? {
+          openingHoursSpecification: [
+            {
+              "@type": "OpeningHoursSpecification",
+              dayOfWeek: siteConfig.hours.days,
+              opens: siteConfig.hours.opens,
+              closes: siteConfig.hours.closes,
+            },
+          ],
+        }
+      : {}),
+    areaServed: areas.map((name) => ({ "@type": "Place", name })),
+    parentOrganization: { "@id": orgId },
+    ...(siteConfig.social.length > 0 ? { sameAs: siteConfig.social.map((s) => s.url) } : {}),
+  };
+}
+
+export function serviceJsonLd(input: { name: string; description: string; path: string; serviceTypes: string[]; areaServed?: string[] }) {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -119,7 +169,9 @@ export function serviceJsonLd(input: { name: string; description: string; path: 
     description: input.description,
     url: absoluteUrl(input.path),
     provider: { "@id": orgId },
-    areaServed: { "@type": "Country", name: "India" },
+    areaServed: input.areaServed?.length
+      ? input.areaServed.map((name) => ({ "@type": "Place", name }))
+      : { "@type": "Country", name: "India" },
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: input.name,

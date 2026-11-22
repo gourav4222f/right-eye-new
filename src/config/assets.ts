@@ -41,6 +41,8 @@ export const images = {
   ctaParticles: t("cta-particles.webp", 1920, 697, ""),
   deskMug: t("desk-mug.webp", 822, 674, "Notebook and coffee mug on a sunlit desk"),
   notFound: t("not-found.webp", 738, 750, "Black-and-white portrait with hair caught in motion"),
+  peopleStudying: t("people-studying.webp", 770, 560, "People studying together on laptops in a busy café"),
+  articlePlanning: t("article-planning.webp", 408, 360, "Keyboard and open notebook with a pen on an orange desk"),
   badgeScallop: { src: "/images/theme/badge-scallop-dark.svg", width: 141, height: 141, alt: "" },
 } satisfies Record<string, SiteImage>;
 
