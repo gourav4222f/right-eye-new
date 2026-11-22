@@ -87,13 +87,16 @@ export const siteConfig = {
     display: "Rohini, New Delhi (near Rithala Metro Station)",
     mapUrl: "https://www.google.com/maps/search/?api=1&query=Rithala+Metro+Station+Rohini+Delhi",
   },
-  /**
-   * Opening hours. TODO: confirm, then fill in (e.g. days Mon–Sat, opens "10:00", closes "19:00").
-   * Left empty, hours are hidden on the site and in schema.
-   */
-  hours: { label: "", days: [] as string[], opens: "", closes: "" },
+  /** Opening hours (IST). Must match Google Business Profile. */
+  hours: {
+    label: "Mon–Fri 10:00 am – 6:00 pm · Sat 10:00 am – 1:00 pm · Sun closed",
+    specs: [
+      { days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "10:00", closes: "18:00" },
+      { days: ["Saturday"], opens: "10:00", closes: "13:00" },
+    ],
+  },
   founder: {
-    name: "Rakesh",
+    name: "Rakesh Mehta",
     role: "Founder & CEO",
   },
   contact: {

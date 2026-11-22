@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Mail, MessageCircle, Phone, MapPin } from "lucide-react";
+import { Clock, Mail, MessageCircle, Phone, MapPin } from "lucide-react";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { PageHero } from "@/components/sections/PageHero";
 import { CoverImage } from "@/components/ui/CoverImage";
@@ -82,6 +82,15 @@ export default function ContactPage() {
                       <span className="link-underline font-medium">{siteConfig.address.display}</span>
                     </span>
                   </a>
+                </li>
+                <li className="flex min-h-11 items-center gap-4">
+                  <span className="grid size-11 shrink-0 place-items-center rounded-full bg-white text-ink">
+                    <Clock className="size-5" aria-hidden="true" />
+                  </span>
+                  <span>
+                    <span className="block text-xs text-white/60">Office hours</span>
+                    <span className="font-medium">{siteConfig.hours.label}</span>
+                  </span>
                 </li>
                 {whatsapp.enabled ? (
                   <li>

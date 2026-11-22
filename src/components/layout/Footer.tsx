@@ -37,6 +37,7 @@ export function Footer() {
               Office: {address.streetAddress ? `${address.streetAddress}, ` : ""}
               {address.display}
             </a>
+            <p className="text-sm text-white/75">{siteConfig.hours.label}</p>
             <SocialIcons tone="light" className="mt-3 lg:justify-end" />
           </div>
         </div>

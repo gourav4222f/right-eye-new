@@ -39,9 +39,9 @@ export function FounderCard() {
           <p className="mt-5 max-w-[60ch] text-muted">{founder.biography}</p>
         ) : (
           <p className="mt-5 max-w-[60ch] text-muted">
-            Rakesh founded RightEyeTechnology to give businesses one dependable technology partner — a team that can plan, build,
-            market and maintain their digital systems together. He leads the company&rsquo;s direction and oversees how projects are
-            scoped and delivered.
+            Rakesh leads RightEyeTechnology&rsquo;s vision, business strategy and overall growth. He focuses on building practical
+            digital solutions, developing long-term client relationships and making sure every project — from social media to
+            software — is scoped and delivered properly.
           </p>
         )}
         {founder.expertise.length > 0 ? (

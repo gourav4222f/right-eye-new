@@ -3,7 +3,8 @@
  *
  * The founder plus the team. Only real people appear publicly: a named
  * profile card renders when BOTH `isVerified` and `isPublished` are true.
- * Verified members with a photo also appear (unnamed) in the team photo mosaic.
+ * Verified members with their own photo also appear in the team photo mosaic.
+ * Photos must be of the actual person — never stock images or pictures found online.
  *
  * To publish someone:
  *   1. Replace the "TBC" name with their real name.
@@ -39,7 +40,7 @@ export interface TeamMember {
 export const teamMembers: TeamMember[] = [
   {
     id: "rakesh",
-    name: "Rakesh",
+    name: "Rakesh Mehta",
     designation: "Founder & CEO",
     department: "Leadership",
     reportsTo: null,
@@ -51,125 +52,111 @@ export const teamMembers: TeamMember[] = [
     isVerified: true,
     isPublished: true,
   },
-  // ---- Team photos supplied 2026-11-22, in order (top-left to bottom-right). Add name + role, then publish. ----
+  // ---- Role slots. Fill in the REAL person (name + their own photo), then publish. ----
+  // Never use stock photos or pictures of other people found online.
   {
-    id: "member-1",
+    id: "cto",
     name: "TBC",
-    designation: "TBC",
-    department: "Growth & Marketing",
+    designation: "Chief Technology Officer (CTO)",
+    department: "Technology & Engineering",
     reportsTo: "rakesh",
-    profileImage: "/images/team/member-1.webp",
-    biography: "",
+    profileImage: "",
+    // Role description — replace with the real person's approved bio.
+    biography: "Oversees technology strategy, software architecture, web development and technical operations.",
     yearsExperience: 0,
     expertise: [],
     linkedin: "",
-    // Real team member (confirmed by the company). Publish once name and role are added.
-    isVerified: true,
+    isVerified: false,
     isPublished: false,
   },
   {
-    id: "member-2",
+    id: "head-software",
     name: "TBC",
-    designation: "TBC",
-    department: "Growth & Marketing",
+    designation: "Head of Software Development",
+    department: "Technology & Engineering",
     reportsTo: "rakesh",
-    profileImage: "/images/team/member-2.webp",
-    biography: "",
+    profileImage: "",
+    // Role description — replace with the real person's approved bio.
+    biography: "Leads software projects and engineering workflows, and builds modern web applications.",
     yearsExperience: 0,
     expertise: [],
     linkedin: "",
-    // Real team member (confirmed by the company). Publish once name and role are added.
-    isVerified: true,
+    isVerified: false,
     isPublished: false,
   },
   {
-    id: "member-3",
+    id: "digital-solutions",
     name: "TBC",
-    designation: "TBC",
-    department: "Growth & Marketing",
+    designation: "Digital Solutions Manager",
+    department: "Technology & Engineering",
     reportsTo: "rakesh",
-    profileImage: "/images/team/member-3.webp",
-    biography: "",
+    profileImage: "",
+    // Role description — replace with the real person's approved bio.
+    biography: "Coordinates website development, digital implementation and project delivery.",
     yearsExperience: 0,
     expertise: [],
     linkedin: "",
-    // Real team member (confirmed by the company). Publish once name and role are added.
-    isVerified: true,
+    isVerified: false,
     isPublished: false,
   },
   {
-    id: "member-4",
+    id: "uiux-lead",
     name: "TBC",
-    designation: "TBC",
-    department: "Growth & Marketing",
+    designation: "UI/UX Design Lead",
+    department: "Technology & Engineering",
     reportsTo: "rakesh",
-    profileImage: "/images/team/member-4.webp",
-    biography: "",
+    profileImage: "",
+    // Role description — replace with the real person's approved bio.
+    biography: "Designs user-friendly website interfaces, responsive layouts and digital experiences.",
     yearsExperience: 0,
     expertise: [],
     linkedin: "",
-    // Real team member (confirmed by the company). Publish once name and role are added.
-    isVerified: true,
+    isVerified: false,
     isPublished: false,
   },
   {
-    id: "member-5",
+    id: "hr-admin",
     name: "TBC",
-    designation: "TBC",
-    department: "Growth & Marketing",
+    designation: "HR & Administration Manager",
+    department: "Leadership",
     reportsTo: "rakesh",
-    profileImage: "/images/team/member-5.webp",
-    biography: "",
+    profileImage: "",
+    // Role description — replace with the real person's approved bio.
+    biography: "Manages recruitment, employee engagement, internal coordination and administration.",
     yearsExperience: 0,
     expertise: [],
     linkedin: "",
-    // Real team member (confirmed by the company). Publish once name and role are added.
-    isVerified: true,
+    isVerified: false,
     isPublished: false,
   },
   {
-    id: "member-6",
+    id: "seo-marketing",
     name: "TBC",
-    designation: "TBC",
+    designation: "SEO & Digital Marketing Manager",
     department: "Growth & Marketing",
     reportsTo: "rakesh",
-    profileImage: "/images/team/member-6.webp",
-    biography: "",
+    profileImage: "",
+    // Role description — replace with the real person's approved bio.
+    biography: "Develops SEO strategy and digital campaigns focused on organic growth and lead generation.",
     yearsExperience: 0,
     expertise: [],
     linkedin: "",
-    // Real team member (confirmed by the company). Publish once name and role are added.
-    isVerified: true,
+    isVerified: false,
     isPublished: false,
   },
   {
-    id: "member-7",
+    id: "client-relations",
     name: "TBC",
-    designation: "TBC",
+    designation: "Client Relations & Project Coordinator",
     department: "Growth & Marketing",
     reportsTo: "rakesh",
-    profileImage: "/images/team/member-7.webp",
-    biography: "",
+    profileImage: "",
+    // Role description — replace with the real person's approved bio.
+    biography: "Manages client communication, project coordination and delivery follow-ups.",
     yearsExperience: 0,
     expertise: [],
     linkedin: "",
-    // Real team member (confirmed by the company). Publish once name and role are added.
-    isVerified: true,
-    isPublished: false,
-  },
-  {
-    id: "member-8",
-    name: "TBC",
-    designation: "TBC",
-    department: "Growth & Marketing",
-    reportsTo: "rakesh",
-    profileImage: "/images/team/member-8.webp",
-    biography: "",
-    yearsExperience: 0,
-    expertise: [],
-    linkedin: "",
-    // Real team member (confirmed by the company). Publish once name and role are added.
-    isVerified: true,
+    isVerified: false,
     isPublished: false,
   },
 ];

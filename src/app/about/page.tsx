@@ -14,7 +14,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "About Us — Digital Marketing & Technology Team in Rohini, Delhi",
   description:
-    "Meet RightEyeTechnology, a digital marketing and technology company in Rohini, Delhi, founded by Rakesh. Social media, ads, websites, video, PR and SEO for businesses across Delhi NCR.",
+    "Meet RightEyeTechnology, a digital marketing and technology company in Rohini, Delhi, founded by Rakesh Mehta. Social media, ads, websites, video, PR and SEO for businesses across Delhi NCR.",
   path: "/about",
 });
 
@@ -56,10 +56,7 @@ export default function AboutPage() {
         }
       />
 
-      <div className="container-site mt-6 lg:mt-8">
-        <TeamMosaic priority />
-        <p className="mt-3 text-sm text-muted">The RightEyeTechnology team — working from our Rohini office and across Delhi NCR.</p>
-      </div>
+      <TeamMosaic priority className="container-site mt-6 lg:mt-8" />
 
       <section className="section-pad" aria-labelledby="story-title">
         <div className="container-site grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)] lg:gap-16">

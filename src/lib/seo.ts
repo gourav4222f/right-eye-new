@@ -143,18 +143,12 @@ export function localBusinessJsonLd(areas: string[]) {
     telephone: siteConfig.contact.phoneE164,
     address: postalAddress(),
     hasMap: siteConfig.address.mapUrl,
-    ...(siteConfig.hours.days.length > 0
-      ? {
-          openingHoursSpecification: [
-            {
-              "@type": "OpeningHoursSpecification",
-              dayOfWeek: siteConfig.hours.days,
-              opens: siteConfig.hours.opens,
-              closes: siteConfig.hours.closes,
-            },
-          ],
-        }
-      : {}),
+    openingHoursSpecification: siteConfig.hours.specs.map((h) => ({
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: h.days,
+      opens: h.opens,
+      closes: h.closes,
+    })),
     areaServed: areas.map((name) => ({ "@type": "Place", name })),
     parentOrganization: { "@id": orgId },
     ...(siteConfig.social.length > 0 ? { sameAs: siteConfig.social.map((s) => s.url) } : {}),
